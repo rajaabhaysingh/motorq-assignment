@@ -1,24 +1,38 @@
-## MotorqAssignment: Vehicle Management
+# MotorqAssignment: Vehicle Management
 
-#### Live (hosted) at: [https://motorq-fend.vercel.app](https://motorq-fend.vercel.app)
+### Live (hosted) at: [https://motorq-fend.vercel.app](https://motorq-fend.vercel.app)
 
-#### Video Demo: [https://www.youtube.com/watch?v=JtDhxVmmp_Q](https://www.youtube.com/watch?v=JtDhxVmmp_Q)
+### Video Demo: [https://www.youtube.com/watch?v=JtDhxVmmp_Q](https://www.youtube.com/watch?v=JtDhxVmmp_Q)
 
 - Stack used: MongoDB, Express, React, Node (MERN)
 
 ## UI Snippets
 
+### Dashboard
+
 ![Home Page](screenshots/Dashboard.png)
+
+### Tooltip popup
 
 ![Tooltip Popup](screenshots/Tooltip.png)
 
+### Vehicles table
+
 ![Vehicles Data](screenshots/Table.png)
+
+### Add vehicle
 
 ![Vehicles Add](screenshots/AddNew.png)
 
+### Edit vehicle
+
 ![Vehicles Edit](screenshots/Edit.png)
 
+### Filter vehicles
+
 ![Vehicles Filter](screenshots/Filter.png)
+
+### Dark mode
 
 ![Dark mode](screenshots/DarkMode.png)
 
@@ -26,11 +40,11 @@
 
 ### API Endpoints
 
-#### `GET` `/api/vehicles`
+#### `GET` `/vehicles`
 
 Request
 
-`http://localhost:9000/api/vehicles?count=1&vin=nagAbcd132`
+`http://localhost:5000/vehicles?count=500&vin=WED78E`
 
 Response
 
@@ -57,20 +71,20 @@ Response
 ]
 ```
 
-## `PATCH` `/api/vehicles/:id`
+#### `PATCH` `/vehicles/:id`
 
 Request
 
-`localhost:9000/api/vehicles/619173491329bf9dbfddb238`
+`localhost:5000/vehicles/619173491329bf9dbfddb238`
 
 Body
 
 ```json
 {
-  "licensePlate": "AA11BB1234",
-  "Driver": "Rohan",
-  "customerName": "Ali",
-  "Office": "Chennai"
+  "licensePlate": "SD68K2345",
+  "driver": "Gygnu Kishli",
+  "customerName": "Hjugu Duinah",
+  "office": "JH12, Place, Name"
 }
 ```
 
@@ -78,24 +92,34 @@ Response
 
 ```json
 {
-  "Status": {
+  "status": {
     "location": {
-      "lat": 18.560512231893355,
-      "lon": 73.87061340023229
+      "lat": 33.3545345345,
+      "lon": 77.4535345
     },
-    "ignition": true,
-    "speed": 87
+    "ignition": false,
+    "speed": 103
   },
   "_id": "619173491329bf9dbfddb238",
-  "Vin": "puneAbcd30",
-  "LicensePlate": "TN23HH30",
-  "Driver": "Peter",
-  "MMY": "2020, Audi, Q7",
-  "CustomerName": "Tony",
-  "Office": "Chennai",
+  "vin": "WED78E",
+  "licensePlate": "GH12H2345",
+  "driver": "Mijitu Kishli",
+  "mmy": "2020, BMW, X5",
+  "customerName": "Chizht Duinah",
+  "office": "S12, Place, Name",
   "__v": 0
 }
 ```
+
+## Other Endpoints
+
+#### `GET` `/vehicles/:id`
+
+- To get vehicle by ID
+
+#### `POST` `/vehicles/populateData`
+
+- To populate random data in database (`500` count at once)
 
 ---
 
