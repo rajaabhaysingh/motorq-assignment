@@ -45,11 +45,6 @@ const Vehicles = ({ helper }) => {
     }
   }, [helper.queryString]);
 
-  // reset querystring on mount
-  React.useEffect(() => {
-    dispatch(changeFilter(""));
-  }, []);
-
   // handlePageChange
   const handlePageChange = () => {
     let params = new URLSearchParams(helper.queryString);

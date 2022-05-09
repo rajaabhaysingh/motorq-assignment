@@ -50,7 +50,7 @@ const HoverCard = ({ cluster }) => {
       <div className="fbw pad-8">
         <div className="fcol">
           <div className={globalCls.txtSmSec}>VIN</div>
-          <div className={globalCls.txtMdPriCol}>{data.licensePlate}</div>
+          <div className={globalCls.txtMdPriCol}>{data.vin}</div>
         </div>
         <div className="fcol">
           <div className={globalCls.txtSmSec}>Speed</div>

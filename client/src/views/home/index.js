@@ -21,7 +21,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   toggleAddVehicle,
   postVehicle,
-  changeFilter,
+  getAllVehicles,
+  resetSuccess,
 } from "../../redux/actions";
 
 const useStyles = makeStyles((theme) => ({
@@ -88,6 +89,13 @@ const Home = ({ helper }) => {
       setIsSnackbarOpen(true);
       dispatch(toggleAddVehicle(false));
     }
+
+    // resolved snackbar popping up bug
+    if (vehicles.patchVehicleSuccessful || vehicles.postVehicleSuccessful) {
+      setTimeout(() => {
+        dispatch(resetSuccess());
+      }, 500);
+    }
   }, [vehicles]);
 
   React.useEffect(() => {
@@ -96,13 +104,15 @@ const Home = ({ helper }) => {
     }
   }, [selectedVehicleId]);
 
-  // reset querystring on mount
+  // loadin categories on initial render
   React.useEffect(() => {
-    dispatch(changeFilter(""));
-  }, []);
+    dispatch(getAllVehicles(helper.queryString));
+  }, [helper.queryString]);
 
   // handleFormSubmit
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
     const formData = {
       ...newVehicleState,
       lat: newVehicleState.latitude,

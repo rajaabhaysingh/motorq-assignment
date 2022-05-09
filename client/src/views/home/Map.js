@@ -3,11 +3,9 @@ import { MapContainer, TileLayer } from "react-leaflet";
 
 // styling
 import { makeStyles } from "@material-ui/core";
-import useGlobalStyles from "../../styles/globalStyles";
 
 // redux
-import { useDispatch, useSelector } from "react-redux";
-import { getAllVehicles } from "../../redux/actions";
+import { useSelector } from "react-redux";
 
 // components
 import VehicleCluster from "./VehicleCluster";
@@ -26,16 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Map = ({ setSelectedVehicleId }) => {
   const cls = useStyles();
-  const globalCls = useGlobalStyles();
-
-  const helper = useSelector((state) => state.helper);
   const vehicles = useSelector((state) => state.vehicles);
-  const dispatch = useDispatch();
-
-  // loadin categories on initial render
-  React.useEffect(() => {
-    dispatch(getAllVehicles(helper.queryString));
-  }, [helper.queryString]);
 
   return (
     <div className={cls.root}>
